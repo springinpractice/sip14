@@ -6,17 +6,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<artifactId>com.springinpractice.top</artifactId>
 		<groupId>com.springinpractice</groupId>
+		<artifactId>com.springinpractice.14_01</artifactId>
 		<version>1.0-RELEASE</version>
+		<relativePath>..</relativePath>
 	</parent>
 	
-	<artifactId>com.springinpractice.14_01</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>com.springinpractice.14_01.kitelib</artifactId>
 	
-	<name>Spring in Practice Recipe 14.1</name>
-	
-	<modules>
-		<module>kite-lib</module>
-	</modules>
+	<name>Kite Library</name>
 </project>
