@@ -26,7 +26,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>com.springinpractice.14_01.kitelib</artifactId>
+			<artifactId>com.springinpractice.14_01.kite</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
