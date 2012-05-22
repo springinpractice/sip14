@@ -22,7 +22,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.springinpractice.ch14.kite.GuardCallback;
 import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
 import com.springinpractice.ch14.kite.sample.model.Message;
 import com.springinpractice.ch14.kite.sample.service.MessageService;
@@ -41,21 +40,6 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	public Message getMotd() {
-		try {
-			return breaker.execute(new GuardCallback<Message>() {
-				
-				/* (non-Javadoc)
-				 * @see com.springinpractice.ch14.kite.GuardCallback#doInGuard()
-				 */
-				@Override
-				public Message doInGuard() throws Exception { return doGetMotd(); }
-			});
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private Message doGetMotd() {
 		flakinator.simulateFlakiness();
 		return createMessage("<p>Welcome to Aggro's Towne!</p>");
 	}
@@ -65,21 +49,6 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	public List<Message> getImportantMessages() {
-		try {
-			return breaker.execute(new GuardCallback<List<Message>>() {
-
-				/* (non-Javadoc)
-				 * @see com.springinpractice.ch14.kite.GuardCallback#doInGuard()
-				 */
-				@Override
-				public List<Message> doInGuard() throws Exception { return doGetImportantMessages(); }
-			});
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private List<Message> doGetImportantMessages() {
 		flakinator.simulateFlakiness();
 		List<Message> messages = new ArrayList<Message>();
 		messages.add(createMessage("<p>Important message 1</p>"));
