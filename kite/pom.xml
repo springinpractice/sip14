@@ -7,12 +7,12 @@
 	
 	<parent>
 		<groupId>com.springinpractice</groupId>
-		<artifactId>com.springinpractice.14_02</artifactId>
+		<artifactId>com.springinpractice.14_03</artifactId>
 		<version>1.0-RELEASE</version>
 		<relativePath>..</relativePath>
 	</parent>
 	
-	<artifactId>com.springinpractice.14_02.kite</artifactId>
+	<artifactId>com.springinpractice.14_03.kite</artifactId>
 	
 	<name>Kite</name>
 </project>
