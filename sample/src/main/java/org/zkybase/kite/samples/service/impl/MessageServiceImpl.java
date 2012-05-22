@@ -18,11 +18,7 @@ package org.zkybase.kite.samples.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-import org.zkybase.kite.GuardCallback;
-import org.zkybase.kite.guard.CircuitBreakerTemplate;
 import org.zkybase.kite.samples.model.Message;
 import org.zkybase.kite.samples.service.MessageService;
 import org.zkybase.kite.samples.util.Flakinator;
@@ -33,8 +29,6 @@ import org.zkybase.kite.samples.util.Flakinator;
  */
 @Service
 public class MessageServiceImpl implements MessageService {
-	@Inject private CircuitBreakerTemplate breaker;
-	
 	private Flakinator flakinator = new Flakinator();
 
 	/* (non-Javadoc)
@@ -42,21 +36,6 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	public Message getMotd() {
-		try {
-			return breaker.execute(new GuardCallback<Message>() {
-				
-				/* (non-Javadoc)
-				 * @see org.zkybase.kite.GuardCallback#doInGuard()
-				 */
-				@Override
-				public Message doInGuard() throws Exception { return doGetMotd(); }
-			});
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private Message doGetMotd() {
 		flakinator.simulateFlakiness();
 		return createMessage("<p>Welcome to Aggro's Towne!</p>");
 	}
@@ -66,21 +45,6 @@ public class MessageServiceImpl implements MessageService {
 	 */
 	@Override
 	public List<Message> getImportantMessages() {
-		try {
-			return breaker.execute(new GuardCallback<List<Message>>() {
-
-				/* (non-Javadoc)
-				 * @see org.zkybase.kite.GuardCallback#doInGuard()
-				 */
-				@Override
-				public List<Message> doInGuard() throws Exception { return doGetImportantMessages(); }
-			});
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private List<Message> doGetImportantMessages() {
 		flakinator.simulateFlakiness();
 		List<Message> messages = new ArrayList<Message>();
 		messages.add(createMessage("<p>Important message 1</p>"));
