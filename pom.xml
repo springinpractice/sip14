@@ -11,10 +11,10 @@
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.14_01</artifactId>
+	<artifactId>com.springinpractice.14_02</artifactId>
 	<packaging>pom</packaging>
 	
-	<name>Spring in Practice Recipe 14.1</name>
+	<name>Spring in Practice Recipe 14.2</name>
 	
 	<modules>
 		<module>kite</module>

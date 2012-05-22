@@ -21,6 +21,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.util.Assert;
 
 import com.springinpractice.ch14.kite.AbstractGuard;
@@ -58,6 +61,7 @@ import com.springinpractice.ch14.kite.exception.CircuitOpenException;
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  * @since 1.0
  */
+@ManagedResource
 public class CircuitBreakerTemplate extends AbstractGuard {
 	public enum State { CLOSED, OPEN, HALF_OPEN };
 
@@ -86,6 +90,7 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * 
 	 * @return exception threshold for this breaker
 	 */
+	@ManagedAttribute(description = "Breaker trips when threshold is reached")
 	public int getExceptionThreshold() {
 		return exceptionThreshold;
 	}
@@ -104,6 +109,9 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * @throws IllegalArgumentException
 	 *             if threshold &lt; 1
 	 */
+	@ManagedAttribute(
+		description = "Breaker trips when threshold is reached",
+		defaultValue = "5")
 	public void setExceptionThreshold(int threshold) {
 		Assert.isTrue(threshold >= 1, "threshold must be >= 1");
 		this.exceptionThreshold = threshold;
@@ -117,6 +125,7 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * 
 	 * @return open state timeout in milliseconds
 	 */
+	@ManagedAttribute(description = "Delay in ms before open breaker goes half-open")
 	public long getTimeout() { return timeout; }
 
 	/**
@@ -129,6 +138,9 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * @throws IllegalArgumentException
 	 *             if timeout &lt; 0
 	 */
+	@ManagedAttribute(
+		description = "Delay in ms before open breaker goes half-open",
+		defaultValue = "30000")
 	public void setTimeout(long timeout) {
 		Assert.isTrue(timeout >= 0L, "timeout must be >= 0");
 		this.timeout = timeout;
@@ -151,6 +163,7 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * 
 	 * @return breaker's state
 	 */
+	@ManagedAttribute(description = "Breaker state (closed, open, half-open)")
 	public State getState() {
 		if (state == State.OPEN) {
 			if (System.currentTimeMillis() >= retryTime) {
@@ -164,8 +177,10 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	// For testing
 	void setState(State state) { this.state = state; }
 
+	@ManagedAttribute(description = "Number of exceptions since last reset")
 	public int getExceptionCount() { return exceptionCount.get(); }
 	
+	@ManagedAttribute(description = "Breaker will retry circuit at or after this time")
 	public long getRetryTime() { return retryTime; }
 
 	/**
@@ -185,6 +200,7 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * closed state allows calls to pass through.
 	 * </p>
 	 */
+	@ManagedOperation(description = "Resets the breaker")
 	public void reset() {
 		log.info("Resetting circuit breaker: {}", getName());
 		this.state = State.CLOSED;
@@ -197,8 +213,10 @@ public class CircuitBreakerTemplate extends AbstractGuard {
 	 * from passing through.
 	 * </p>
 	 */
+	@ManagedOperation(description = "Trips the breaker, auto-resetting after timeout")
 	public void trip() { trip(true); }
 	
+	@ManagedOperation(description = "Trips the breaker without auto-resetting")
 	public void tripWithoutAutoReset() { trip(false); }
 	
 	private void trip(boolean autoReset) {
