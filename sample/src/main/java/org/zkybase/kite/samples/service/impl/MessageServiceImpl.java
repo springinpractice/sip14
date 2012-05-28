@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.zkybase.kite.GuardedBy;
 import org.zkybase.kite.samples.model.Message;
 import org.zkybase.kite.samples.service.MessageService;
 import org.zkybase.kite.samples.util.Flakinator;
@@ -35,6 +36,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @see org.zkybase.kite.samples.service.MessageService#getMotd()
 	 */
 	@Override
+	@GuardedBy({ "messageServiceBreaker" })
 	public Message getMotd() {
 		flakinator.simulateFlakiness();
 		return createMessage("<p>Welcome to Aggro's Towne!</p>");
@@ -44,6 +46,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @see org.zkybase.kite.samples.service.MessageService#getImportantMessages()
 	 */
 	@Override
+	@GuardedBy({ "messageServiceBreaker" })
 	public List<Message> getImportantMessages() {
 		flakinator.simulateFlakiness();
 		List<Message> messages = new ArrayList<Message>();
