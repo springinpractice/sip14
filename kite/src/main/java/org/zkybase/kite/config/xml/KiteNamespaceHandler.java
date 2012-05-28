@@ -34,6 +34,7 @@ public class KiteNamespaceHandler extends NamespaceHandlerSupport {
 	 */
 	public void init() {
 		log.info("Initializing KiteNamespaceHandler");
+		registerBeanDefinitionParser("annotation-config", new AnnotationConfigParser());
 		registerBeanDefinitionParser("guard-list-advice", new GuardListAdviceParser());
 		registerBeanDefinitionParser("circuit-breaker", new CircuitBreakerParser());
 	}

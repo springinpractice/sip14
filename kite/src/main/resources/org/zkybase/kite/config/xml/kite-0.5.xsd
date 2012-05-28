@@ -35,6 +35,26 @@ limitations under the License.
 Defines the configuration elements for Kite.
 		]]></xsd:documentation>
 	</xsd:annotation>
+
+	<xsd:element name="annotation-config">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[
+Enables annotation support for Kite components.
+			]]></xsd:documentation>
+		</xsd:annotation>
+		
+		<!-- TODO Figure out whether this makes sense. May want to interleave various Kite interceptors with other
+		     interceptors (like transactions) -->
+		<xsd:complexType>
+			<xsd:attribute name="order" type="xsd:integer">
+				<xsd:annotation>
+					<xsd:documentation><![CDATA[
+Defines the order of the Kite advice that is applied to beans annotated with Kite's @GuardedBy annotation.
+					]]></xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
 	
 	<xsd:element name="guard-list-advice">
 		<xsd:annotation>

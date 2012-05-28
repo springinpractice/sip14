@@ -21,6 +21,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.zkybase.kite.GuardedBy;
 
 import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
 import com.springinpractice.ch14.kite.sample.model.Message;
@@ -39,6 +40,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @see com.springinpractice.ch14.kite.samples.service.MessageService#getMotd()
 	 */
 	@Override
+	@GuardedBy({ "messageServiceBreaker" })
 	public Message getMotd() {
 		flakinator.simulateFlakiness();
 		return createMessage("<p>Welcome to Aggro's Towne!</p>");
@@ -48,6 +50,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @see com.springinpractice.ch14.kite.samples.service.MessageService#getImportantMessages()
 	 */
 	@Override
+	@GuardedBy({ "messageServiceBreaker" })
 	public List<Message> getImportantMessages() {
 		flakinator.simulateFlakiness();
 		List<Message> messages = new ArrayList<Message>();
