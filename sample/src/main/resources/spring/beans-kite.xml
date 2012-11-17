@@ -11,5 +11,5 @@
 	
 	<context:mbean-export />
 	
-	<bean class="org.zkybase.kite.guard.CircuitBreakerTemplate" p:exceptionThreshold="4" p:timeout="30000" />
+	<bean class="com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate" p:exceptionThreshold="4" p:timeout="30000" />
 </beans>
