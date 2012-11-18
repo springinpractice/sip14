@@ -26,7 +26,6 @@ import com.springinpractice.ch14.kite.GuardCallback;
 import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
 import com.springinpractice.ch14.kite.sample.model.Message;
 import com.springinpractice.ch14.kite.sample.service.MessageService;
-import com.springinpractice.ch14.kite.sample.util.Flakinator;
 
 /**
  * @author Willie Wheeler (willie.wheeler@gmail.com)
@@ -35,8 +34,7 @@ import com.springinpractice.ch14.kite.sample.util.Flakinator;
 @Service
 public class MessageServiceImpl implements MessageService {
 	@Inject private CircuitBreakerTemplate breaker;
-	
-	private Flakinator flakinator = new Flakinator();
+	@Inject private Flakinator flakinator;
 
 	/* (non-Javadoc)
 	 * @see com.springinpractice.ch14.kite.samples.service.MessageService#getMotd()
