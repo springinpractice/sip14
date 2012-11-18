@@ -31,7 +31,7 @@
 	<!-- Use AOP to guard message service calls -->
 	<aop:config>
 		<aop:pointcut id="messageServicePointcut"
-			expression="execution(* org.zkybase.kite.samples.service.impl.MessageServiceImpl.*(..))" />
+			expression="execution(* com.springinpractice.ch14.kite.sample.service.impl.MessageServiceImpl.*(..))" />
 		<aop:advisor advice-ref="messageServiceGuardListAdvice" pointcut-ref="messageServicePointcut" />
 	</aop:config>
 </beans:beans>
