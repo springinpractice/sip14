@@ -15,13 +15,13 @@
 	<context:mbean-export />
 	
 	<bean id="messageServiceBreaker"
-		class="org.zkybase.kite.guard.CircuitBreakerTemplate"
+		class="com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate"
 		p:exceptionThreshold="4"
 		p:timeout="30000" />
 	
-	<bean id="messageServiceGuardListAdvice" class="org.zkybase.kite.interceptor.GuardListInterceptor">
+	<bean id="messageServiceGuardListAdvice" class="com.springinpractice.ch14.kite.interceptor.GuardListInterceptor">
 		<property name="source">
-			<bean class="org.zkybase.kite.interceptor.DefaultGuardListSource">
+			<bean class="com.springinpractice.ch14.kite.interceptor.DefaultGuardListSource">
 				<property name="guards">
 					<list>
 						<ref bean="messageServiceBreaker" />
@@ -34,7 +34,7 @@
 	<!-- Use AOP to guard message service calls -->
 	<aop:config>
 		<aop:pointcut id="messageServicePointcut"
-			expression="execution(* org.zkybase.kite.samples.service.impl.MessageServiceImpl.*(..))" />
+			expression="execution(* com.springinpractice.ch14.kite.sample.service.impl.MessageServiceImpl.*(..))" />
 		<aop:advisor advice-ref="messageServiceGuardListAdvice" pointcut-ref="messageServicePointcut" />
 	</aop:config>
 </beans>
