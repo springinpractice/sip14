@@ -41,7 +41,8 @@ import com.springinpractice.ch14.kite.interceptor.GuardListSourcePointcut;
  * @since 1.0
  */
 class AnnotationConfigParser implements BeanDefinitionParser {
-	private static final String GUARD_LIST_ADV_BEAN_NAME = "com.springinpractice.ch14.kite.interceptor.internalGuardListAdvisor";
+	private static final String GUARD_LIST_ADV_BEAN_NAME =
+			"com.springinpractice.ch14.kite.interceptor.internalGuardListAdvisor";
 	private static final Logger log = LoggerFactory.getLogger(AnnotationConfigParser.class);
 
 	public BeanDefinition parse(Element elem, ParserContext parserCtx) {
