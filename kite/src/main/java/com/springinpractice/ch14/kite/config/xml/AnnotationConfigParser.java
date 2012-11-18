@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.config.xml;
+package com.springinpractice.ch14.kite.config.xml;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +28,10 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
-import org.zkybase.kite.interceptor.AnnotationGuardListSource;
-import org.zkybase.kite.interceptor.GuardListInterceptor;
-import org.zkybase.kite.interceptor.GuardListSourcePointcut;
+
+import com.springinpractice.ch14.kite.interceptor.AnnotationGuardListSource;
+import com.springinpractice.ch14.kite.interceptor.GuardListInterceptor;
+import com.springinpractice.ch14.kite.interceptor.GuardListSourcePointcut;
 
 
 /**
@@ -40,7 +41,7 @@ import org.zkybase.kite.interceptor.GuardListSourcePointcut;
  * @since 1.0
  */
 class AnnotationConfigParser implements BeanDefinitionParser {
-	private static final String GUARD_LIST_ADV_BEAN_NAME = "org.zkybase.kite.interceptor.internalGuardListAdvisor";
+	private static final String GUARD_LIST_ADV_BEAN_NAME = "com.springinpractice.ch14.kite.interceptor.internalGuardListAdvisor";
 	private static final Logger log = LoggerFactory.getLogger(AnnotationConfigParser.class);
 
 	public BeanDefinition parse(Element elem, ParserContext parserCtx) {

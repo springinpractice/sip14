@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.config.xml;
+package com.springinpractice.ch14.kite.config.xml;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
@@ -21,8 +21,9 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.w3c.dom.Element;
-import org.zkybase.kite.interceptor.DefaultGuardListSource;
-import org.zkybase.kite.interceptor.GuardListInterceptor;
+
+import com.springinpractice.ch14.kite.interceptor.DefaultGuardListSource;
+import com.springinpractice.ch14.kite.interceptor.GuardListInterceptor;
 
 
 /**

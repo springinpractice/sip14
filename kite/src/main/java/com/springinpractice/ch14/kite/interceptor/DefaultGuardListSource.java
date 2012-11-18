@@ -13,27 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.interceptor;
+package com.springinpractice.ch14.kite.interceptor;
 
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.zkybase.kite.Guard;
+import com.springinpractice.ch14.kite.Guard;
 
 /**
+ * Source with a fixed guard list.
+ * 
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  * @since 1.0
  */
-public interface GuardListSource {
+public class DefaultGuardListSource implements GuardListSource {
+	private List<Guard> guards;
 	
-	/**
-	 * Return the list of guards for a method, or <code>null</code> if the method is unguarded.
-	 * 
-	 * @param method
-	 *            method
-	 * @param targetClass
-	 *            target class. May be <code>null</code>, in which case the declaring class of the method must be used.
-	 * @return the matching guard list, or <code>null</code> if none found
+	public List<Guard> getGuards() { return guards; }
+	
+	public void setGuards(List<Guard> guards) { this.guards = guards; }
+	
+	/* (non-Javadoc)
+	 * @see com.springinpractice.ch14.kite.interceptor.GuardListSource#getGuards(java.lang.reflect.Method, java.lang.Class)
 	 */
-	List<Guard> getGuards(Method method, Class<?> targetClass);
+	@Override
+	public List<Guard> getGuards(Method method, Class<?> targetClass) { return guards; }
 }

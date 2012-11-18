@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.interceptor;
+package com.springinpractice.ch14.kite.interceptor;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
@@ -24,8 +24,9 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.zkybase.kite.Guard;
-import org.zkybase.kite.GuardCallback;
+
+import com.springinpractice.ch14.kite.Guard;
+import com.springinpractice.ch14.kite.GuardCallback;
 
 /**
  * @author Willie Wheeler (willie.wheeler@gmail.com)

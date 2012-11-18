@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.config.xml;
+package com.springinpractice.ch14.kite.config.xml;
 
 import org.springframework.beans.factory.xml.AbstractSimpleBeanDefinitionParser;
 import org.w3c.dom.Element;
-import org.zkybase.kite.guard.CircuitBreakerTemplate;
+
+import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
 
 
 /**

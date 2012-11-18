@@ -21,8 +21,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.zkybase.kite.GuardedBy;
 
+import com.springinpractice.ch14.kite.GuardedBy;
 import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
 import com.springinpractice.ch14.kite.sample.model.Message;
 import com.springinpractice.ch14.kite.sample.service.MessageService;

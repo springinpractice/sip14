@@ -63,7 +63,7 @@ Creates a GuardListInterceptor bean having the specified configuration.
 			]]></xsd:documentation>
 			<xsd:appinfo>
 				<tool:annotation>
-					<tool:exports type="org.zkybase.kite.interceptor.GuardListInterceptor" />
+					<tool:exports type="com.springinpractice.ch14.kite.interceptor.GuardListInterceptor" />
 				</tool:annotation>
 			</xsd:appinfo>
 		</xsd:annotation>

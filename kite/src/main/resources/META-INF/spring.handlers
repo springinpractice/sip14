@@ -1,1 +1,1 @@
-http\://zkybase.org/schema/kite=org.zkybase.kite.config.xml.KiteNamespaceHandler
+http\://zkybase.org/schema/kite=com.springinpractice.ch14.kite.config.xml.KiteNamespaceHandler

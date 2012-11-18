@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zkybase.kite.interceptor;
+package com.springinpractice.ch14.kite.interceptor;
 
 import static org.springframework.util.Assert.notNull;
 
@@ -28,8 +28,9 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.core.BridgeMethodResolver;
 import org.springframework.util.ClassUtils;
-import org.zkybase.kite.Guard;
-import org.zkybase.kite.GuardedBy;
+
+import com.springinpractice.ch14.kite.Guard;
+import com.springinpractice.ch14.kite.GuardedBy;
 
 /**
  * Strategy returning a guard list sourced from the {@link GuardedBy} annotation.
@@ -49,7 +50,7 @@ public class AnnotationGuardListSource implements GuardListSource, BeanFactoryAw
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException { this.beanFactory = beanFactory; }
 
 	/* (non-Javadoc)
-	 * @see org.zkybase.kite.interceptor.GuardListSource#getGuards(java.lang.reflect.Method, java.lang.Class)
+	 * @see com.springinpractice.ch14.kite.interceptor.GuardListSource#getGuards(java.lang.reflect.Method, java.lang.Class)
 	 */
 	@Override
 	public List<Guard> getGuards(Method method, Class<?> targetClass) {
