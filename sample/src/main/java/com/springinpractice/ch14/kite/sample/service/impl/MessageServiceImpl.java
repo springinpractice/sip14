@@ -18,13 +18,11 @@ package com.springinpractice.ch14.kite.sample.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
 import com.springinpractice.ch14.kite.GuardedBy;
-<<<<<<< HEAD
-import com.springinpractice.ch14.kite.guard.CircuitBreakerTemplate;
-=======
->>>>>>> 0c11841169bacf86e5918eee004ad7234599a6ae
 import com.springinpractice.ch14.kite.sample.model.Message;
 import com.springinpractice.ch14.kite.sample.service.MessageService;
 
@@ -34,13 +32,8 @@ import com.springinpractice.ch14.kite.sample.service.MessageService;
  */
 @Service
 public class MessageServiceImpl implements MessageService {
-<<<<<<< HEAD
-	@Inject private CircuitBreakerTemplate breaker;
 	@Inject private Flakinator flakinator;
-=======
-	private Flakinator flakinator = new Flakinator();
->>>>>>> 0c11841169bacf86e5918eee004ad7234599a6ae
-
+	
 	/* (non-Javadoc)
 	 * @see com.springinpractice.ch14.kite.samples.service.MessageService#getMotd()
 	 */
