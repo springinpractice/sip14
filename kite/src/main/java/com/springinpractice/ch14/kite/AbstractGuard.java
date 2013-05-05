@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 the original author or authors.
+ * Copyright (c) 2010-2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package com.springinpractice.ch14.kite;
 
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.jmx.export.annotation.ManagedAttribute;
 
 /**
  * @author Willie Wheeler (willie.wheeler@gmail.com)
@@ -25,7 +24,6 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
 public abstract class AbstractGuard implements Guard, BeanNameAware {
 	private String name;
 	
-	@ManagedAttribute(description = "Guard name")
 	public String getName() { return name; }
 	
 	/* (non-Javadoc)
